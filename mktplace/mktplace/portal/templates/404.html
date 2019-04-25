@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <style>
+    body {
+		background-color: #000;
+}
+
+.content-404 {
+		font-family: Avenir,Helvetica,sans-serif;
+		color: #fff;
+		background-color: none;
+
+}
+a {
+		color: #666;
+}
+h1 {
+		font-size: 200px;
+		margin-bottom: 0;
+		margin-top: 0;
+}
+h1 .small {
+		font-size: 20px;
+}
+h2 {
+		margin-top: 0;
+		font-size: 24px;
+}
+
+.btn {
+		display: inline-block;
+		border: 1px solid #aaa;
+		border-radius: 40px;
+		padding: 15px 30px;
+		margin-right: 15px;
+	  color: #999;
+}
+.btn:hover {
+		color: #e2e2e2;
+		background: rgba(255, 255, 255, 0.1);
+}
+p {
+		margin: 0px 30px 30px 30px;
+}
+
+    </style>
+
+<div class="container">
+  <div class="row content-404">
+    <div class="col-lg-12"></div>
+    <div class="col-lg-12">
+      <h1>404<span class="small">Page not found</span></h1>
+      <h2>Oops, the page you're looking for does not exist.</h2>
+      <p>Maybe, the page DO EXIST, but you are seeing just a portfolio version of this application, what do not contain billing and search services. <br>
+       <p>For more information, please take a look at the code. <br>
+        <br>
+
+		  <a class="btn" href='{% url 'home' %}'>Go home</a>
+    </div>
+  </div>
+</div>
+<div class="bg-img"></div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="section-content">
+        <div class="container">
+            <h3> {{ name }}: {{product.name}}</h3>
+            <br>
+            <p><a href={% url  'my_products' %}>Back</a></p>
+
+            <table class="table table_bordered">
+                <tr>
+                    <th>Question</th>
+                    <th>Action</th>
+                </tr>
+            {% for question in product.questions_no_answer %}
+                <tr>
+                    <td>{{ question.question }}</td>
+                    <td><a href={% url 'product_answer_question' product.id question.id %}>Answer</a></td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </section>
+
+{% endblock %}

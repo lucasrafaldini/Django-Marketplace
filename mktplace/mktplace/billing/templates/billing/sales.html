@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <section class="section-content">
+        <div class="container">
+            <h3>My Sales</h3>
+            <br>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>Product</th>
+                    <th>Value</th>
+                    <th>Purchase status</th>
+                    <th>Order status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.product.name|truncatechars:50 }}</td>
+                        <td>{{ order.total }}</td>
+                        <td>
+                            {% if order.status == 'Approved' %}
+                                Approved
+                            {% elif order.status == 'Pending' %}
+                                Pending
+                            {% else %}
+                                Not authorized
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ order.shipment_status }}
+                        </td>
+                        <td>
+                            <a href="{% url 'billing_change_shipment_status' order.id %}">
+                                Edit status
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+
+{% endblock %}

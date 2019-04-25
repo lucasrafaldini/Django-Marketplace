@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3> {{ name }}</h3>
+    <br>
+    <p><a href={% url  'product_new' %}>New Ad</a></p>
+
+    <table class="table table_bordered">
+        <tr>
+            <th>Code</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.status }}</td>
+            <td><a href={% url 'product_edit' product.id %}>Edit</a> |
+            <a href={% url 'product_show' product.slug %}>Show</a> |
+{#            <a href={% url 'product_images' product.id %}>Images</a> |#}
+                <a href={% url 'product_question' product.id %}>Questions
+                    {% if product.questions_no_answer.count >= 1  %}
+                    ({{ product.questions_no_answer.count }})
+                    {% endif %}
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

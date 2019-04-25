@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="section-content">
+        <div class="container">
+            <h3>Service Order: #{{ order.id }}</h3>
+            <br>
+
+            <ul class="list-group">
+                <li class="list-group-item">Product: {{ order.product.name }}</li>
+                <li class="list-group-item">Price: R$ {{ order.total }}</li>
+                <li class="list-group-item">Salesman: {{ order.merchant.first_name }}</li>
+                <li class="list-group-item">Order Status:
+                    {% if order.status == 'Approved' %}
+                        Approved
+                    {% elif order.status == 'Pending' %}
+                        Pending
+                    {% else %}
+                        Disapproved
+                    {% endif %}
+                </li>
+                <li class="list-group-item">
+                    {% if order.shipment_status == 'Pending' %}
+                        <b><span class="text-success">Order Received</span></b>
+                    {% elif order.shipment_status == 'Packing' %}
+                        <b><span class="text-muted">Packing</span></b>
+                    {% elif order.shipment_status == 'Posted' %}
+                        <b><span class="text-warning">Item(s) Posted</span></b>
+                    {% else %}
+                        <b><span class="text-danger">Delivered</span></b>
+                    {% endif %}
+                </li>
+                <li class="list-group-item">Date: {{ order.created_at|date:'d/m/Y' }}</li>
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="section-content">
+        <div class="container">
+            <h3>Product Images: {{ product.name }}</h3>
+            <br>
+            <p><a href="{% url 'my_products' %}">Back</a> |
+                <a href="{% url 'product_images_new' product.id %}">New Image</a>
+            </p>
+
+            <table class="table table_bordered">
+                <tr>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for image in images %}
+                    <tr>
+                        <td class="thumbnail">
+                            <img src="{{ image.images }}" style="height: 250px;">
+                        </td>
+                        <td>
+                            <a href="{% url 'product_images_delete' product.id image.id%}">Remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+{% endblock %}

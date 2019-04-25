@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Cadastre-se</h1>
+    <hr>
+    <form method="post" action="{% url 'login_register' %}" class="form-horizontal">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+{% endblock %}

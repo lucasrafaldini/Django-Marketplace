@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Editing: {{ product_name }}</h3>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+    <button type=˜submit" class="btn btn-success">Save</button>
+    </form>
+
+{% endblock %}
